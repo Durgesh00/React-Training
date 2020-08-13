@@ -1,11 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Greet from "./Greet";
+import productList from "./productList";
+import ProductList from './components/ProductList'
+import projectList from "./projectList";
+import ProjectList from "./components/ProjectList"
+import { Button } from 'reactstrap';
+
 
 function App() {
+  //console.log(projectList)
   return (
     <div className="App">
-      <header className="App-header">
+      <Greet name={" Durgesh"} />
+      {/* {productList.map(product => <h3>{product.name}</h3>)} */}
+      {/* <ProductList /> */}
+      <ProjectList />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +30,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+  </header>*/}
     </div>
   );
 }
