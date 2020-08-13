@@ -7,13 +7,13 @@ const ProjectDetail = (props) => {
   return (
     <Media >
       <Media left href="#">
-        <Media object variant="top" style={{ maxHeight: 80, maxWidth: 130 }} src={image_url} thumbnail alt="Generic placeholder image" />
+        <Media object variant="top" style={{ maxHeight: 80, maxWidth: 100 }} src={image_url} className='image-responsive' alt="Generic placeholder image" />
       </Media>
       <Media body>
         <Media heading variant="top">
           {name}
         </Media >
-        {description}
+        {<h6 className='text-left'>{description}</h6>}
       </Media>
     </Media>
   );
