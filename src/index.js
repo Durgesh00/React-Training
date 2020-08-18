@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Greet from "./Greet";
+//import Greet from "./Greet";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+//import {BrowserRouter as }
 ReactDOM.render(
   <React.StrictMode>
     <App />
