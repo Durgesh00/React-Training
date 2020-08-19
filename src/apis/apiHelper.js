@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 const apiHelper = (type, url, data) => {
@@ -7,6 +6,6 @@ const apiHelper = (type, url, data) => {
     url,
     data
   });
-};
+}
 
 export default apiHelper;

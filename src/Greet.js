@@ -1,5 +1,7 @@
-import React from "react";
+import React from 'react';
 const Greet = (props) => {
-  return <h1>Hello {props.name} </h1>
-};
+    let {name, surname} = props;
+    return <h1>Hello {`${name} ${surname}`} </h1>
+}
+
 export default Greet;

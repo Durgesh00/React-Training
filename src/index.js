@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-//import Greet from "./Greet";
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import {BrowserRouter as }
+
+import {Provider} from 'react-redux';
+import {createStore, combineReducers} from 'redux';
+import Routes from './routes/Routes';
+import loginReducer from './reducers/loginReducer';
+import projectsReducer from './reducers/projectReducer';
+
+// const store = createStore(combineReducers(loginReducer, projectsReducer));
+const store = createStore(loginReducer);
+console.log(store);
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store = {store}>
+      <Routes />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

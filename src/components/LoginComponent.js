@@ -1,61 +1,43 @@
 import React from 'react';
-import {
-  CardBody, Container, Row, Col, Card,
-  Form, FormGroup, Label, Input, Button, FormFeedback
-} from 'reactstrap';
+import { CardBody, Container, Row, Col, Card, Form, FormGroup, Label, Input, Button, FormFeedback } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { LOGIN_REDUCER } from '../shared/actionConstants'
 
-let LoginComponent = ({ validateData, state, dispatch }) => {
-  const { username, password, usernameError, passwordError } = state
-
+let LoginComponent = ({ dispatch, showError, passwordError, usernameError, password, username }) => {
   const setUsernameWrapper = (evt) => {
-    dispatch({ type: 'field', field: 'username', value: evt.target.value });
-  }
+    dispatch({ type: LOGIN_REDUCER.SET_USERNAME, value: evt.target.value })
+  };
   const setPasswordWrapper = (evt) => {
-    dispatch({ type: 'field', field: 'password', value: evt.target.value });
-  }
-
-  // const setUsernameWrapper = (evt) => {
-  //   console.log(evt.target.value)
-  //   setUsername(evt.target.value)
-  // };
-
-  // const setPasswordWrapper = (evt) => {
-  //   setPassword(evt.target.value)
-  //   console.log(evt.target.value)
-  // };
+    dispatch({ type: LOGIN_REDUCER.SET_PASSWORD, value: evt.target.value })
+  };
 
   return (
-    <Container>
-      <Row className="align-items-center">
-        <Col sm={{ size: 6, offset: 3 }} className="mt-5">
-          <Card>
-            <CardBody>
-              <Form>
-                <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
-                  <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder"
-                    value={username} onChange={setUsernameWrapper}
-                    invalid={(usernameError !== null)} />
-                  <FormFeedback>{usernameError}</FormFeedback>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="examplePassword">Password</Label>
-                  <Input type="password" name="password" id="examplePassword"
-                    placeholder="password placeholder" value={password}
-                    onChange={setPasswordWrapper}
-                    invalid={(passwordError !== null)} />
-                  <FormFeedback>{passwordError}</FormFeedback>
-                </FormGroup>
-                <Button onClick={() => {
-                  validateData();
-                }}>Submit</Button>
-              </Form>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container style={{ paddingTop: '25vh', minHeight: '50vh', }}>
+        <Row>
+          <Col sm={{ size: 6, offset: 3 }}>
+            <Card>
+              <CardBody>
+                <Form>
+                  <FormGroup>
+                    <Label for="exampleEmail" value={username} >Email</Label>
+                    <Input type="email" name="email" id="exampleEmail" onChange={setUsernameWrapper} invalid={usernameError !== null}></Input>
+                    <FormFeedback>{usernameError}</FormFeedback>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="examplePassword" value={password}>Password</Label>
+                    <Input type="password" name="password" id="examplePassword" onChange={setPasswordWrapper} invalid={passwordError !== null}></Input>
+                    <FormFeedback>{passwordError}</FormFeedback>
+                  </FormGroup>
+                  <Button onClick={showError} >Login</Button>
+                </Form>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <p id='1'></p>
+    </>
   );
 };
 
@@ -64,9 +46,8 @@ export default LoginComponent;
 LoginComponent.propTypes = {
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  setUsername: PropTypes.func.isRequired,
-  setPassword: PropTypes.func.isRequired,
-  logValues: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  showError: PropTypes.func.isRequired,
 }
 
 // LoginComponent.defaultProps = {
