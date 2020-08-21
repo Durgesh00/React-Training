@@ -4,29 +4,31 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import Routes from './routes/Routes';
 import loginReducer from './reducers/loginReducer';
 import projectsReducer from './reducers/projectReducer';
 import userSaga from './sagas/userSaga';
+import projectWatcherSaga from './sagas/projectSaga';
 
 const sagaMiddleWare = createSagaMiddleware()
 const store = createStore(
   combineReducers({
-    loginReducer, 
+    loginReducer,
     projectsReducer
   }),
   applyMiddleware(sagaMiddleWare)
 );
 
 sagaMiddleWare.run(userSaga)
+sagaMiddleWare.run(projectWatcherSaga)
 // const store = createStore(loginReducer);
 console.log(store);
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store = {store}>
+    <Provider store={store}>
       <Routes />
     </Provider>
   </React.StrictMode>,

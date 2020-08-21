@@ -9,8 +9,8 @@ const Routes = () => {
         <Route path="/" exact={true}>
           <LoginContainer />
         </Route>
-        <Route path="/dashboard" exact = {true}>
-            <DashboardContainer/>
+        <Route path="/dashboard" exact={true}>
+          <DashboardContainer />
         </Route>
       </Switch>
     </Router>

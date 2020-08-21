@@ -19,7 +19,9 @@ const LoginContainer = () => {
     username: yup.string().email().required(),
     password: yup.string().required(),
   });
-
+  function* generator() {
+    yield loginRequest({ username, password });
+  }
 
   const showError = () => {
     dispatch(resetErrors());
@@ -34,13 +36,9 @@ const LoginContainer = () => {
           });
         }
         else {
-
           dispatch(loginRequest({ username, password }));
-
         }
-
       })
-
   }
 
   if (userDetails.auth_token) {
